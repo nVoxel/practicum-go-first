@@ -1,3 +1,3 @@
 module github.com/nVoxel/practicum-go-first
 
-go 1.24.3
+go 1.22.12
