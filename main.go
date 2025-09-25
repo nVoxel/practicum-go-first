@@ -135,7 +135,7 @@ func checkThresholds(s stats) {
 	}
 	memUsage := float64(s.MemUsedBytes) / float64(s.MemTotalBytes)
 	if memUsage > memUsageThreshold {
-		percent := int64(roundToNearest(memUsage * 100))
+		percent := int64(memUsage * 100)
 		fmt.Printf("Memory usage too high: %d%%\n", percent)
 	}
 
@@ -163,8 +163,8 @@ func checkThresholds(s stats) {
 		if freeBps < 0 {
 			freeBps = 0
 		}
-		freeMbit := float64(freeBps*8) / bitsPerMegabitPerSecond
-		fmt.Printf("Network bandwidth usage high: %s Mbit/s available\n", formatFloat(freeMbit))
+		freeMBps := freeBps / 1_000_000
+		fmt.Printf("Network bandwidth usage high: %d Mbit/s available\n", freeMBps)
 	}
 }
 
